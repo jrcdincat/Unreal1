@@ -6,6 +6,7 @@
 #include "GameFramework/GameModeBase.h"
 #include "Unreal1GameModeBase.generated.h"
 
+class UUnreal1Widget;
 /**
  * 
  */
@@ -18,7 +19,11 @@ protected:
 	int32 ItemsCollected = 0;
 	int32 ItemsInLevel = 0;
 
-	// TODO - Implement Widget Variables
+	UPROPERTY(EditAnywhere, Category = "Widgets")
+	TSubclassOf<class UUserWidget> GameWidgetClass;
+
+	UPROPERTY()
+		UUnreal1Widget* GameWidget;
 
 	virtual void BeginPlay() override;
 

@@ -2,7 +2,8 @@
 
 
 #include "Unreal1ItemBase.h"
-#include "Unreal1/Game//Unreal1Player.h"
+#include "Unreal1/Game/Unreal1Player.h"
+#include "Unreal1/Game/Unreal1GameModeBase.h"
 
 // Sets default values
 AUnreal1ItemBase::AUnreal1ItemBase()
@@ -35,6 +36,11 @@ void AUnreal1ItemBase::OverlapBegin(UPrimitiveComponent* OverlappedComponent, AA
 
 void AUnreal1ItemBase::Collected_Implementation()
 {
-	// TODO - Do Game Mode Stuff
+	AUnreal1GameModeBase* GameMode = Cast<AUnreal1GameModeBase>(GetWorld()->GetAuthGameMode());
+
+	if (GameMode)
+	{
+		GameMode->ItemCollected();
+	}
 }
 
